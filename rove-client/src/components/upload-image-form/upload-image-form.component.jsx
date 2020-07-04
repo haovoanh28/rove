@@ -60,7 +60,7 @@ const UploadImageForm = ({ currentUser, userUpdateAvatarStart }) => {
         onChange={handleFileChange}
       />
       <ButtonsContainer>
-        <Button as="label" for="uploadFile">
+        <Button as="label" htmlFor="uploadFile">
           Choose your image
         </Button>
         <Button
