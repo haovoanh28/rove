@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
 
 export const Nav = styled.nav`
   background-color: #ffaaa5;
@@ -21,10 +22,11 @@ export const Nav = styled.nav`
       margin-right: 2rem;
 
       span {
-        cursor : pointer;
+        cursor: pointer;
       }
 
-      a, span {
+      a,
+      span {
         transition: transform 0.2s;
         &:link,
         &:visited {
@@ -34,8 +36,14 @@ export const Nav = styled.nav`
 
         &:hover,
         &:active {
-          transform: translateX(.5rem);
+          transform: translateX(0.5rem);
         }
+      }
+    }
+
+    @media only screen and (max-width: 720px) {
+      & {
+        min-height: 8vh;
       }
     }
   }
@@ -47,6 +55,27 @@ export const Brand = styled.ul`
       margin-left: 3rem;
       font-size: 3rem;
       text-transform: uppercase;
+
+      @media only screen and (max-width: 720px) {
+        text-transform: none;
+        margin-left: 0;
+      }
+    }
+    @media only screen and (max-width: 720px) {
+      align-self: center !important;
+    }
+  }
+
+  @media only screen and (max-width: 720px) {
+    & {
+      display: none !important;
+      flex-direction: column;
+      position: absolute;
+      top: 10vh;
+      z-index: 2;
+      width: 100%;
+      height: 25rem;
+      justify-content: space-around;
     }
   }
 `;
@@ -56,11 +85,24 @@ export const User = styled.ul`
     .avatar {
       width: 50px;
       height: 50px;
-      background-image : url(${props => props.avatar}); 
-      background-size : cover;
-      background-position : center;
-      border-radius : 50%;
-      position : relative;
+      background-image: url(${(props) => props.avatar});
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      position: relative;
+    }
+  }
+`;
+
+export const StyledMenuIcon = styled(MenuIcon)`
+  width: 3rem;
+  height: 10vh;
+  margin-left: 2.5rem;
+  display: none;
+
+  @media only screen and (max-width: 720px) {
+    & {
+      display: block;
     }
   }
 `;
