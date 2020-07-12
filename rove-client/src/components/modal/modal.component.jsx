@@ -13,6 +13,7 @@ const Modal = () => {
   return (
     <ModalContainer id="modal">
       <StyledModal>
+        <div class="modal_header"></div>
         <label id="close" onClick={handleClick}>
           X
         </label>

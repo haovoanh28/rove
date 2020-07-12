@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import variables from "../../_variables";
+
 export const StyledInputFileType = styled.input`
   display: none;
 `;
@@ -10,8 +12,8 @@ export const ImageContainer = styled.div`
   align-items: center;
   width: 50%;
   height: 50%;
-  box-shadow: .4rem .4rem .4rem rgba(0,0,0, 0.4);
-  border-radius: .5rem;
+  box-shadow: 0.4rem 0.4rem 1rem 1px rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem;
   overflow: hidden;
 
   p {
@@ -28,12 +30,49 @@ export const ImageContainer = styled.div`
 `;
 
 export const UploadImageFormContainer = styled.div`
+  margin: 0 auto;
+  width: 80%;
+  height: 90%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 80%;
-  height: 100%;
-  margin: 0 auto;
+  
+  & button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
+
+  & .small_screen {
+    display: none;
+  }
+
+  @media only screen and (max-width: ${variables.phone}) {
+    flex-direction: column;
+    & * {
+      width: 100%;
+    }
+
+    & *:nth-child(3) {
+      order: 1;
+    }
+
+    & *:nth-child(4) {
+      order: 3;
+    }
+
+    & *:nth-child(5) {
+      text-align: center;
+      order: 2;
+    }
+
+    & .big_screen {
+      display: none;
+    }
+
+    & .small_screen {
+      display: block;
+    }
+  }
 `;
 
 export const ButtonsContainer = styled.div`
@@ -46,10 +85,5 @@ export const ButtonsContainer = styled.div`
   button,
   label {
     margin-top: 0;
-  }
-
-  button:disabled {
-    background-color : gray;
-    cursor: not-allowed;
   }
 `;

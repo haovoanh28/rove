@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+import variables from '../../_variables';
+
 export const TitleList = styled.ul`
   list-style: none;
   display: flex;
@@ -16,7 +18,7 @@ export const ListItem = styled.li`
   cursor: pointer;
 
   &:not(:last-child) {
-    border-right : 1px solid #fcf8f3;
+    border-right: 1px solid #fcf8f3;
   }
 
   ${(props) =>
@@ -36,14 +38,27 @@ export const ListItem = styled.li`
 export const UserDashboardTitle = styled.div`
   color: inherit;
   height: 10%;
+
+  @media only screen and (max-width : ${variables.tab}) {
+    height: 5rem;
+  }
 `;
 
 export const StyledUserDashboard = styled.div`
   width: 70%;
   align-self: stretch;
-  color : white;
-  background-color : #fcf8f3;
+  color: white;
+  background-color: #fcf8f3;
   padding: 0;
   border-radius: 0.5rem;
   overflow: hidden;
+
+  @media only screen and (max-width : ${variables.tab}) {
+    align-self : center;
+    width : 75%;
+  }
+
+  @media only screen and (max-width : ${variables.phone}) {
+    width : 95%;
+  }
 `;

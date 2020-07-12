@@ -16,8 +16,8 @@ export const StyledUserCard = styled.div`
 
   span {
     svg {
-      width: 20px;
-      height: 20px;
+      width: 2rem;
+      height: 2rem;
     }
   }
 `;

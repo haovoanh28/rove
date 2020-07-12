@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
+import variables from '../../_variables';
+
 export const ModalContainer = styled.div`
   width: 100%;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
@@ -23,11 +25,31 @@ export const StyledModal = styled.div`
   background-color: white;
   box-shadow: 0.5rem 0.5rem 0.3rem rgba(0, 0, 0, 0.4);
   font-size: 1.6rem;
+  overflow : hidden;
+
+  .modal_header {
+    height : 7%;
+    background-color: #f36860;
+  }
 
   #close {
     margin: 1rem 1.7rem;
+    position: absolute;
+    top: -2px;
+    right : 0;
     display: block;
     float: right;
     cursor: pointer;
+    color : white;
+  }
+
+  @media only screen and (max-width : ${variables.phone}) {
+    width: 95%;
+  }
+
+  @media only screen and (max-width : ${variables.tab}) {
+    #close {
+      font-size : 2.2rem;
+    }
   }
 `;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as MenuIcon } from "../../assets/icons/menu.svg";
+import variable from "../../_variables";
 
 export const Nav = styled.nav`
   background-color: #ffaaa5;
@@ -21,6 +22,10 @@ export const Nav = styled.nav`
       font-size: 1.6rem;
       margin-right: 2rem;
 
+      @media only screen and (max-width: ${variable.tab}) {
+        margin-right : 0;
+      }
+
       span {
         cursor: pointer;
       }
@@ -41,7 +46,7 @@ export const Nav = styled.nav`
       }
     }
 
-    @media only screen and (max-width: 720px) {
+    @media only screen and (max-width: ${variable.tab}) {
       & {
         min-height: 8vh;
       }
@@ -56,17 +61,17 @@ export const Brand = styled.ul`
       font-size: 3rem;
       text-transform: uppercase;
 
-      @media only screen and (max-width: 720px) {
+      @media only screen and (max-width: ${variable.tab}) {
         text-transform: none;
         margin-left: 0;
       }
     }
-    @media only screen and (max-width: 720px) {
+    @media only screen and (max-width: ${variable.tab}) {
       align-self: center !important;
     }
   }
 
-  @media only screen and (max-width: 720px) {
+  @media only screen and (max-width: ${variable.tab}) {
     & {
       display: none !important;
       flex-direction: column;
@@ -83,13 +88,28 @@ export const Brand = styled.ul`
 export const User = styled.ul`
   li {
     .avatar {
-      width: 50px;
-      height: 50px;
+      width: 5rem;
+      height: 5rem;
       background-image: url(${(props) => props.avatar});
       background-size: cover;
       background-position: center;
       border-radius: 50%;
       position: relative;
+      
+      @media only screen and (max-width : ${variable.tab}) {
+        margin-right: 1em;
+        font-size: 1.5rem;
+      }
+
+      @media only screen and (max-width : ${variable.phone}) {
+        margin-right: 4rem;
+      }
+    }
+  }
+
+  @media only screen and (max-width: ${variable.phone}) {
+    & #user-first-name {
+      display: none;
     }
   }
 `;
@@ -100,7 +120,7 @@ export const StyledMenuIcon = styled(MenuIcon)`
   margin-left: 2.5rem;
   display: none;
 
-  @media only screen and (max-width: 720px) {
+  @media only screen and (max-width: ${variable.tab}) {
     & {
       display: block;
     }

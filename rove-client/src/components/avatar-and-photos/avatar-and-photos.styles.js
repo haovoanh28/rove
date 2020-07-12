@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import variables from "../../_variables";
+
 export const AvatarAndPhotosContainer = styled.div`
   flex: 1;
   height: 100%;
@@ -11,6 +13,19 @@ export const AvatarAndPhotosContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
+
+  @media only screen and (max-width: ${variables.largeTab}) {
+    margin-bottom: 3rem;
+    max-width: 75%;
+  }
+
+  @media only screen and (max-width: ${variables.tab}) {
+    max-width: 90%;
+  }
+
+  @media only screen and (max-width: ${variables.phone}) {
+    padding: 1.5rem 0;
+  }
 `;
 
 export const AvatarContainer = styled.div`
@@ -49,6 +64,14 @@ export const AvatarContainer = styled.div`
   &:hover > div {
     display: flex;
   }
+
+  @media only screen and (max-width: ${variables.tab}) {
+    height: 30rem;
+    width: 70%;
+    img {
+      object-fit: fill;
+    }
+  }
 `;
 
 export const PhotosContainer = styled.div`
@@ -57,13 +80,30 @@ export const PhotosContainer = styled.div`
   margin-top: 4rem;
   overflow-y: scroll;
   height: 45%;
-  div {
+  & > div {
+    display: flex;
+    flex-wrap: wrap;
+    height: 50rem;
+  }
+
+  & div div {
     display: inline-block;
+    flex: 1 0 20rem;
+    height: 20rem;
+    margin-bottom: 1.5rem;
+    margin-right: 1rem;
 
     img {
       display: block;
-      width: 10rem;
-      height: 10rem;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
     }
+  }
+
+  @media only screen and (max-width: ${variables.phone}) {
+    width: 100%;
+    border: none;
   }
 `;

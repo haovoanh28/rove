@@ -24,6 +24,6 @@ export const StyledUserMenu = styled.div`
   }
 
   &:hover div {
-      display : block;
+    display: block;
   }
 `;

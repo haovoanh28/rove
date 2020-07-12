@@ -59,7 +59,7 @@ const UploadImageForm = ({ currentUser, userUpdateAvatarStart }) => {
         id="uploadFile"
         onChange={handleFileChange}
       />
-      <ButtonsContainer>
+      <ButtonsContainer className="big_screen">
         <Button as="label" htmlFor="uploadFile">
           Choose your image
         </Button>
@@ -72,6 +72,18 @@ const UploadImageForm = ({ currentUser, userUpdateAvatarStart }) => {
           Upload your image
         </Button>
       </ButtonsContainer>
+      <Button as="label" htmlFor="uploadFile" className="small_screen">
+        Choose your image
+      </Button>
+      <Button
+        id="upload-button"
+        disabled={!hasUserUploadedImage}
+        primary={true}
+        onClick={handleFileUpload}
+        className="small_screen"
+      >
+        Upload your image
+      </Button>
       <ImageContainer>
         <p id="temp-text">Your image here</p>
         <img src="" alt="your" id="preview-image" />

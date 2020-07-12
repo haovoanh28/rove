@@ -38,7 +38,7 @@ const Header = ({ currentUser, userLogoutSuccess }) => {
                 <UserMenu />
               </div>
             </li>
-            <li>{currentUser.firstName}</li>
+            <li id="user-first-name">{currentUser.firstName}</li>
           </User>
         ) : (
           <ul>
