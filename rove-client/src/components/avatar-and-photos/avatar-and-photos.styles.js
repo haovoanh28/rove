@@ -14,13 +14,21 @@ export const AvatarAndPhotosContainer = styled.div`
   justify-content: center;
   overflow: hidden;
 
+  button {
+    width: 40%;
+    margin: 1rem auto;
+    margin-top: 3rem;
+    font-size: 3.5rem;
+    padding : 0.5rem 0;
+  }
+
   @media only screen and (max-width: ${variables.largeTab}) {
     margin-bottom: 3rem;
-    max-width: 75%;
+    min-width: 75%;
   }
 
   @media only screen and (max-width: ${variables.tab}) {
-    max-width: 90%;
+    min-width: 90%;
   }
 
   @media only screen and (max-width: ${variables.phone}) {

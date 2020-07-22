@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import "./App.css";
+import {SuccessMessage} from './App.styles';
+
 import Header from "./pages/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
 import SignUpPage from "./pages/signup/signup-page.component";
@@ -14,6 +15,8 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 function App({ currentUser }) {
   return (
     <div className="AppContainer">
+    <SuccessMessage id="success-message"></SuccessMessage>
+    <div id="err-message"></div>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />

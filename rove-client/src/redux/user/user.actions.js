@@ -73,6 +73,26 @@ export const userUpdateAvatarFailure = (err) => ({
   payload: err,
 });
 
+export const userAddPhotoStart = (data) => ({
+  type: userActionTypes.USER_ADD_PHOTO_START,
+  payload: data,
+});
+
+export const userAddPhotoSuccess = (user) => ({
+  type: userActionTypes.USER_ADD_PHOTO_SUCCESS,
+  payload: user,
+});
+
+export const userAddPhotoFailure = (err) => ({
+  type: userActionTypes.USER_ADD_PHOTO_FAILURE,
+  payload: err,
+});
+
+export const setPendingState = (state) => ({
+  type: userActionTypes.SET_PENDING_STATE,
+  payload: state,
+});
+
 export const hideErrorMessage = () => ({
   type: userActionTypes.HIDE_ERROR_MESSAGE,
 });

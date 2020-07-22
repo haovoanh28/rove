@@ -2,9 +2,11 @@ import { createSelector } from "reselect";
 
 const selectUser = (state) => state.user;
 
+// Lay du lieu tra ve tu input selectors va result func se lam viec dua tren du lieu do
+
 export const selectCurrentUser = createSelector(
-  [selectUser],
-  (user) => user.currentUser
+  [selectUser], // input selectors
+  (user) => user.currentUser // result func
 );
 
 export const selectPhotos = createSelector(

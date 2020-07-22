@@ -12,7 +12,12 @@ import {
   userUpdateFailure,
   userUpdateAvatarSuccess,
   userUpdateAvatarFailure,
+  userAddPhotoSuccess,
+  userAddPhotoFailure,
+  setPendingState,
 } from "./user.actions";
+
+import {showSuccessMessage} from '../../utilities';
 
 function* onUserLoginStart(action) {
   try {
@@ -25,6 +30,7 @@ function* onUserLoginStart(action) {
     const token = yield response.data.accessToken;
     const userInfo = yield jwt.decode(token);
     userInfo.token = token;
+    yield call(showSuccessMessage, "Login successfully");
     yield put(userLoginSuccess(userInfo));
   } catch (err) {
     yield put(userLoginFailure(err));
@@ -42,7 +48,6 @@ function* onUserSignupStart(action) {
     const userInfo = yield jwt.decode(token);
     userInfo.token = token;
     yield put(userSignupSuccess(userInfo));
-    yield console.log(response);
   } catch (err) {
     yield put(userSignupFailure(err));
   }
@@ -59,6 +64,7 @@ function* onUserUpdateStart(action) {
       },
       data: data,
     });
+    yield call(showSuccessMessage,"Your information has been updated successfully");
     yield put(userUpdateSuccess(response.data.data));
   } catch (err) {
     yield put(userUpdateFailure(err));
@@ -66,6 +72,7 @@ function* onUserUpdateStart(action) {
 }
 
 function* onUserUpdateAvatarStart(action) {
+  yield put(setPendingState(true));
   const { _id, token, formData } = action.payload;
 
   try {
@@ -77,10 +84,31 @@ function* onUserUpdateAvatarStart(action) {
       },
       data: formData,
     });
-
+    yield call(showSuccessMessage, "Your avatar is up-to-date", true);
     yield put(userUpdateAvatarSuccess(response.data.data));
   } catch (err) {
     yield put(userUpdateAvatarFailure(err));
+  }
+}
+
+function* onUserAddPhotoStart(action) {
+  yield put(setPendingState(true));
+  const { _id, token, formData } = action.payload;
+
+  try {
+    const response = yield axios({
+      method: "PATCH",
+      url: `http://localhost:8000/api/v1/users/${_id}/photo`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      data: formData,
+    });
+
+    yield call(showSuccessMessage, "Image has been added to your gallery", true);
+    yield put(userAddPhotoSuccess(response.data.data));
+  } catch (err) {
+    yield put(userAddPhotoFailure(err));
   }
 }
 
@@ -103,12 +131,17 @@ function* watchUserUpdateAvatarStart() {
   );
 }
 
+function* watchUserAddPhotoStart() {
+  yield takeLatest(UserActionTypes.USER_ADD_PHOTO_START, onUserAddPhotoStart);
+}
+
 function* userSaga() {
   yield all([
     call(watchUserLoginStart),
     call(watchUserSignupStart),
     call(watchUserUpdateStart),
-    call(watchUserUpdateAvatarStart)
+    call(watchUserUpdateAvatarStart),
+    call(watchUserAddPhotoStart),
   ]);
 }
 

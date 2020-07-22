@@ -36,7 +36,7 @@ export const UploadImageFormContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
+
   & button:disabled {
     background-color: gray;
     cursor: not-allowed;
@@ -48,6 +48,7 @@ export const UploadImageFormContainer = styled.div`
 
   @media only screen and (max-width: ${variables.phone}) {
     flex-direction: column;
+    height: 80%;
     & * {
       width: 100%;
     }
@@ -87,3 +88,23 @@ export const ButtonsContainer = styled.div`
     margin-top: 0;
   }
 `;
+
+export const UploadImageTypeContainer = styled.div`
+  width: 60%;
+  margin: 2rem auto;
+  text-align: center;
+  font-size: 1.6rem;
+  color: ${variables.dark_color};
+
+  #upload_image_type {
+    color: ${variables.primary_color};
+    text-transform: uppercase;
+  }
+`;
+
+export const SpinnerContainer = styled.div`
+  height:100%;
+  background-color: rgba(0,0,0,0.1);
+  width: 100%;
+  
+`

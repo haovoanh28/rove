@@ -25,7 +25,7 @@ exports.getAllUser = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "Success",
     data: {
-      users
+      users,
     },
   });
 });
@@ -102,6 +102,19 @@ exports.updateUser = catchAsync(async (req, res, next) => {
 
 exports.changeAvatar = catchAsync(async (req, res, next) => {
   const file = req.file;
+
+  // file :
+  // {
+  //   fieldname: 'avatar',
+  //   originalname: 'Screenshot_2020-05-03_11-28-10.png',
+  //   encoding: '7bit',
+  //   mimetype: 'image/png',
+  //   destination: 'uploads',
+  //   filename: 'Screenshot_2020-05-03_11-28-10-1594568429359.png',
+  //   path: 'uploads/Screenshot_2020-05-03_11-28-10-1594568429359.png',
+  //   size: 418348
+  // }
+
   if (!file) return next(new AppErr("File not found", 404));
 
   const filePath = `${__dirname}/../${file.path}`;
@@ -113,13 +126,50 @@ exports.changeAvatar = catchAsync(async (req, res, next) => {
 
   const updatedUser = await updateUserAndAddToken(id, req.token, updateInfo);
 
-  console.log(updatedUser);
+  res.json({
+    message: "Upload successfully",
+    data: updatedUser,
+  });
+
+  // Delete file on server
+  await unlinkAsync(file.path);
+});
+
+exports.addPhotos = catchAsync(async (req, res, next) => {
+  const file = req.file;
+
+  // file :
+  // {
+  //   fieldname: 'avatar',
+  //   originalname: 'Screenshot_2020-05-03_11-28-10.png',
+  //   encoding: '7bit',
+  //   mimetype: 'image/png',
+  //   destination: 'uploads',
+  //   filename: 'Screenshot_2020-05-03_11-28-10-1594568429359.png',
+  //   path: 'uploads/Screenshot_2020-05-03_11-28-10-1594568429359.png',
+  //   size: 418348
+  // }
+
+  if (!file) return next(new AppErr("File not found", 404));
+
+  const filePath = `${__dirname}/../${file.path}`;
+  const fileSource = fs.createReadStream(filePath);
+
+  const fileId = await createFile(fileSource);
+  const { id } = req.params;
+
+  const updateInfo = {
+    $push: { photos: `https://drive.google.com/uc?id=${fileId}` },
+  };
+
+  const updatedUser = await updateUserAndAddToken(id, req.token, updateInfo);
 
   res.json({
     message: "Upload successfully",
     data: updatedUser,
   });
 
+  // Delete file on server
   await unlinkAsync(file.path);
 });
 

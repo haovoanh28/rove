@@ -4,14 +4,10 @@ import "./spinner.styles.css";
 const Spinner = () => {
   return (
     <div className="spinnerContainer">
-      <div className="lds-roller">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div className="spinner_waiting_text">
+        <p>Please wait a minute ... </p>
+      </div>
+      <div className="lds-heart">
         <div></div>
       </div>
     </div>

@@ -29,7 +29,13 @@ const HomePage = ({
             {userCollection ? (
               <Route exact path="/" component={UserCardsCollection} />
             ) : (
-              <Spinner />
+              <div
+                style={{
+                  height: "90vh"
+                }}
+              >
+                <Spinner />
+              </div>
             )}
           </>
         ) : (

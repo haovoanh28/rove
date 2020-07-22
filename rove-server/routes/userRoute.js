@@ -21,6 +21,7 @@ const {
   updateUser,
   changeAvatar,
   checkValidID,
+  addPhotos,
   authenticateToken,
 } = require(`./../controller/userController`);
 
@@ -38,5 +39,6 @@ router
   .patch(authenticateToken, checkValidID, updateUser);
 
 router.route("/:id/avatar").patch(authenticateToken, upload.single("avatar"), checkValidID, changeAvatar);
+router.route("/:id/photo").patch(authenticateToken, upload.single("photo"), checkValidID, addPhotos)
 
 module.exports = router;
