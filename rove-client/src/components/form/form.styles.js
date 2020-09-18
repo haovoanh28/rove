@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import variables from '../../_variables';
+import variables from "../../_variables";
 
 export const FormContainer = styled.form`
   width: 30%;
@@ -11,6 +11,8 @@ export const FormContainer = styled.form`
   margin: 0 auto;
   font-size: 1.6rem;
   text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 
   & > * {
     margin-bottom: 4.5rem;
@@ -48,20 +50,20 @@ export const FormContainer = styled.form`
     box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.3);
   }
 
-  @media only screen and (max-width : ${variables.tab}) {
+  @media only screen and (max-width: ${variables.tab}) {
     & {
-      width : 50%;
+      width: 50%;
     }
   }
 
-  @media only screen and (max-width : ${variables.phone}) {
-    width : 70%;
+  @media only screen and (max-width: ${variables.phone}) {
+    width: 70%;
     margin-bottom: 1rem;
-    margin-top : 2rem;
-    min-height : auto;
+    margin-top: 2rem;
+    min-height: auto;
   }
 
-  @media only screen and (max-width : ${variables.smallPhone}) {
-    width : 90%;
+  @media only screen and (max-width: ${variables.smallPhone}) {
+    width: 90%;
   }
 `;

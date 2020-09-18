@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Brand, Nav, User, StyledMenuIcon } from "./header.styles";
 import "./header.styles.css";
 
-import {ReactComponent as BrandLogo} from '../../assets/icons/brand_logo.svg';
+import { ReactComponent as BrandLogo } from "../../assets/icons/brand_logo.svg";
 import UserMenu from "../../components/user-menu/user-menu.component";
 
 const Header = ({ currentUser, userLogoutSuccess }) => {
@@ -18,21 +18,39 @@ const Header = ({ currentUser, userLogoutSuccess }) => {
     }
   };
 
+  const handleOnClick = (e) => {
+    document.getElementById("login_form").scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <Nav>
         <StyledMenuIcon onClick={toggleMenu} />
         <Brand id="nav">
           <li id="brand_logo">
-            <Link to="/"><BrandLogo /></Link>
+            <Link to="/">
+              <BrandLogo />
+            </Link>
           </li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Privacy</li>
-          <li>Term</li>
+          <li>
+            <Link to="/">About</Link>
+          </li>
+          <li>
+            <Link to="/">Contact</Link>
+          </li>
+          <li>
+            <Link to="/">Privacy</Link>
+          </li>
+          <li>
+            <Link to="/">Term</Link>
+          </li>
         </Brand>
 
-        <Link to="/"><BrandLogo className="sub-logo" /></Link>
+        <Link to="/">
+          <BrandLogo className="sub-logo" />
+        </Link>
 
         {currentUser ? (
           <User avatar={currentUser.avatar}>
@@ -46,7 +64,9 @@ const Header = ({ currentUser, userLogoutSuccess }) => {
         ) : (
           <ul>
             <li>
-              <Link to="/">Log in</Link>
+              <Link to="/" onClick={handleOnClick}>
+                Log in
+              </Link>
             </li>
             {/* <li>
               <Link to="/signup">Sign up</Link>

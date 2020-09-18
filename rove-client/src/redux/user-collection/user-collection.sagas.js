@@ -18,7 +18,6 @@ function* onFetchUserCollectionStart(action) {
     });
     const userCollection = response.data.data.users;
     yield put(fetchUserCollectionSuccess(userCollection));
-    console.log(response);
   } catch (err) {
     yield put(fetchUserCollectionFailure(err));
   }

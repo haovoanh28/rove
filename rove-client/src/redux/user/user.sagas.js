@@ -26,7 +26,6 @@ function* onUserLoginStart(action) {
       url: "http://localhost:8000/api/v1/users/login",
       data: action.payload,
     });
-    console.log(response);
     const token = yield response.data.accessToken;
     const userInfo = yield jwt.decode(token);
     userInfo.token = token;
@@ -41,12 +40,13 @@ function* onUserSignupStart(action) {
   try {
     const response = yield axios({
       method: "POST",
-      url: "http://users",
+      url: "http://localhost:8000/api/v1/users",
       data: action.payload,
     });
     const token = yield response.data.data.accessToken;
     const userInfo = yield jwt.decode(token);
     userInfo.token = token;
+    yield put(setPendingState(true));
     yield put(userSignupSuccess(userInfo));
   } catch (err) {
     yield put(userSignupFailure(err));

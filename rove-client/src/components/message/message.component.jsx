@@ -46,7 +46,6 @@ const Message = ({
       message,
     });
     setMessageContent("");
-    console.log("sent message");
   };
 
   const addChat = useCallback(
@@ -71,7 +70,6 @@ const Message = ({
 
   useEffect(() => {
     const fetchMessages = async () => {
-      console.log("fetching messages");
       const data = {
         sender: currentUserId,
         receiver: selectedUserId,
@@ -94,8 +92,6 @@ const Message = ({
 
   useEffect(() => {
     if (messageList.length <= 0) return;
-
-    console.log(messageList);
 
     messageList.forEach((messageObj) => {
       const { sender, receiver, content } = messageObj;
@@ -130,8 +126,6 @@ const Message = ({
   return (
     <MessageContainer>
       <MessagesContainer>
-        <p>Your current id {currentUserId}</p>
-        <p>You are chatting with {selectedUserId}</p>
         {chatList}
         <div ref={messageEndRef} style={{ height: "5%" }} />
       </MessagesContainer>

@@ -11,43 +11,43 @@ import Button from "../button/button.component";
 
 import {
   userLoginStart,
-  hideErrorMessage
+  hideErrorMessage,
 } from "../../redux/user/user.actions";
 import { selectMessageError } from "../../redux/user/user.selectors";
 
 const LogIn = ({ userLoginStart, errMessage, hideErrorMessage }) => {
   useEffect(() => {
-    if(errMessage) {  
+    if (errMessage) {
       setTimeout(() => hideErrorMessage(), 3000);
     }
   }, [errMessage, hideErrorMessage]);
 
   const [state, setState] = useState({
     email: "",
-    password: ""
+    password: "",
   });
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setState(pre => {
+    setState((pre) => {
       return {
         ...pre,
-        [name]: value
+        [name]: value,
       };
     });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     userLoginStart(state);
   };
 
   return (
-    <LogInForm onSubmit={handleSubmit}>
+    <LogInForm onSubmit={handleSubmit} id="login_form">
       {errMessage ? <div className="errText">{errMessage}</div> : null}
 
       <div className="text">
-        <h2>Finding your love now</h2>
+        <h2>Find your love now</h2>
       </div>
       <FormGroup>
         <Input
@@ -89,13 +89,13 @@ const LogIn = ({ userLoginStart, errMessage, hideErrorMessage }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  errMessage: selectMessageError(state)
+const mapStateToProps = (state) => ({
+  errMessage: selectMessageError(state),
 });
 
-const mapDispatchToProps = dispatch => ({
-  userLoginStart: payload => dispatch(userLoginStart(payload)),
-  hideErrorMessage: () => dispatch(hideErrorMessage())
+const mapDispatchToProps = (dispatch) => ({
+  userLoginStart: (payload) => dispatch(userLoginStart(payload)),
+  hideErrorMessage: () => dispatch(hideErrorMessage()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

@@ -39,7 +39,13 @@ const HomePage = ({
           </>
         ) : (
           <>
-            <Home />
+            <Home>
+              <div className="slogan_container">
+                <p className="slogan">DON'T</p>
+                <p className="slogan">BE</p>
+                <p className="slogan">SHY</p>
+              </div>
+            </Home>
             <LogIn />
           </>
         )}

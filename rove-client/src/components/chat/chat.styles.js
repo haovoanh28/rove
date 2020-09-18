@@ -26,7 +26,7 @@ export const ChatContent = styled.span`
   display: inline-block;
   word-break: break-all;
   border-radius: 2.5rem;
-  padding: 1.1rem;
+  padding: 0.8rem;
   max-width: 45%;
   ${(props) => (props.who === "me" ? sentMessage : receivedMessage)};
 `;

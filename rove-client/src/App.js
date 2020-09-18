@@ -5,7 +5,9 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { SuccessMessage } from "./App.styles";
 
 import Header from "./pages/header/header.component";
+import Footer from "./pages/footer/footer.component";
 import HomePage from "./pages/homepage/homepage.component";
+import About from "./pages/about/about.component";
 import SignUpPage from "./pages/signup/signup-page.component";
 import Communication from "./pages/communication/communication.component";
 import EditProfile from "./pages/edit-profile/edit-profile.component";
@@ -55,7 +57,9 @@ function App({ currentUser, socket, createSocket, onReceiveMessage }) {
           path="/edit"
           render={() => (currentUser ? <EditProfile /> : <Redirect to="/" />)}
         />
+        <Route path="/about" render={About} />
       </Switch>
+      <Footer />
     </div>
   );
 }

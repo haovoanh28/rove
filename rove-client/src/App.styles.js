@@ -7,16 +7,12 @@ Dark color : #698474
 
 */
 
-import styled, {keyframes} from "styled-components";
-import variables from './_variables';
+import styled, { keyframes } from "styled-components";
+import variables from "./_variables";
 
 const slideDownAnimation = keyframes`
   0% {
     top : 0rem;
-  }
-
-  80% {
-    top : 4rem;
   }
 
   100% {
@@ -37,16 +33,16 @@ export const SuccessMessage = styled.div`
   text-align: center;
   z-index: 10;
   border-radius: 1rem;
-  box-shadow : .5rem .5rem .5rem rgba(0,0,0, 0.4);
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   padding: 1.5rem 0.5rem;
-  animation-name : ${slideDownAnimation};
+  animation-name: ${slideDownAnimation};
   animation-duration: 3s;
 
   @media only screen and (max-width: ${variables.tab}) {
-      width: 80%;
+    width: 80%;
   }
 
   @media only screen and (max-width: ${variables.phone}) {
-      width: 95%;
+    width: 95%;
   }
 `;

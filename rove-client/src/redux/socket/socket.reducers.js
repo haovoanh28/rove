@@ -20,7 +20,6 @@ const socketReducer = (currentState = INITIAL_STATE, action) => {
       };
     case socketTypes.ON_RECEIVE_MESSAGE:
       currentState.socket.on("receive-message", ({ sender, message }) => {
-        console.log(`receive message ${message} from ${sender}`);
         currentState.sender = sender;
         currentState.received_message = message;
       });

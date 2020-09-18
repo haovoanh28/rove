@@ -23,7 +23,7 @@ export const Nav = styled.nav`
       margin-right: 2rem;
 
       @media only screen and (max-width: ${variable.tab}) {
-        margin-right : 0;
+        margin-right: 0;
 
         #brand_logo {
           display: none;
@@ -62,7 +62,7 @@ export const Nav = styled.nav`
 
     @media only screen and (max-width: ${variable.tab}) {
       display: block;
-      
+
       #image0 {
         height: 200px !important;
       }
@@ -80,7 +80,7 @@ export const Brand = styled.ul`
       @media only screen and (max-width: ${variable.tab}) {
         text-transform: none;
         margin-left: 0;
-        display : none;
+        display: none;
       }
     }
     @media only screen and (max-width: ${variable.tab}) {
@@ -111,15 +111,15 @@ export const User = styled.ul`
       background-size: cover;
       background-position: center;
       border-radius: 50%;
-      border : 1px solid ${variable.light_color};
+      border: 1px solid ${variable.light_color};
       position: relative;
-      
-      @media only screen and (max-width : ${variable.tab}) {
+
+      @media only screen and (max-width: ${variable.tab}) {
         margin-right: 1em;
         font-size: 1.5rem;
       }
 
-      @media only screen and (max-width : ${variable.phone}) {
+      @media only screen and (max-width: ${variable.phone}) {
         margin-right: 4rem;
       }
     }
@@ -144,9 +144,8 @@ export const StyledMenuIcon = styled(MenuIcon)`
     }
   }
 
-  @media only screen and (max-width : ${variable.smallPhone}) {
+  @media only screen and (max-width: ${variable.smallPhone}) {
     & {
-      width: 4.5rem;
     }
   }
 `;

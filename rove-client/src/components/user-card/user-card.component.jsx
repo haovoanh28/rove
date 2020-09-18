@@ -33,7 +33,6 @@ const UserCard = ({
       _v,
       ...otherUserProps
     } = otherProps;
-    console.log(otherUserProps);
     const user = {
       avatar,
       firstName,
@@ -41,7 +40,6 @@ const UserCard = ({
       gender,
       ...otherUserProps,
     };
-    console.log(user);
     history.push({
       pathname: "/communication",
       state: { user },
