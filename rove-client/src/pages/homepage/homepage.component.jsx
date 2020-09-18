@@ -16,7 +16,6 @@ const HomePage = ({
 }) => {
   useEffect(() => {
     if (currentUser && !userCollection) {
-      console.log("hello");
       fetchUserCollectionStart(currentUser.token);
     }
   }, [currentUser, fetchUserCollectionStart, userCollection]);
@@ -31,7 +30,7 @@ const HomePage = ({
             ) : (
               <div
                 style={{
-                  height: "90vh"
+                  height: "90vh",
                 }}
               >
                 <Spinner />

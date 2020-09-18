@@ -13,6 +13,7 @@ import { ReactComponent as MaleIcon } from "../../assets/images/male.svg";
 import Button from "../button/button.component";
 
 import { changeContentType } from "../../redux/dashboard-content/dashboard-content.action";
+import { setSelectedUserId } from "../../redux/user/user.actions";
 
 const UserCard = ({
   avatar,
@@ -21,10 +22,17 @@ const UserCard = ({
   gender,
   history,
   changeContentType,
+  setSelectedUserId,
   ...otherProps
 }) => {
   const handleClick = (e) => {
-    const { location, match, staticContext, _v, ...otherUserProps } = otherProps;
+    const {
+      location,
+      match,
+      staticContext,
+      _v,
+      ...otherUserProps
+    } = otherProps;
     console.log(otherUserProps);
     const user = {
       avatar,
@@ -33,11 +41,12 @@ const UserCard = ({
       gender,
       ...otherUserProps,
     };
-     console.log(user);
+    console.log(user);
     history.push({
       pathname: "/communication",
-      state : {user}
+      state: { user },
     });
+    setSelectedUserId(user._id);
     changeContentType("about-me");
   };
 
@@ -53,7 +62,7 @@ const UserCard = ({
         <span>{gender === "Female" ? <FemaleIcon /> : <MaleIcon />}</span>
       </NameAndGender>
       <Button primary as="a" onClick={handleClick}>
-        Connect now
+        MATCH
       </Button>
     </StyledUserCard>
   );
@@ -61,6 +70,7 @@ const UserCard = ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeContentType: (payload) => dispatch(changeContentType(payload)),
+  setSelectedUserId: (payload) => dispatch(setSelectedUserId(payload)),
 });
 
 export default connect(null, mapDispatchToProps)(withRouter(UserCard));

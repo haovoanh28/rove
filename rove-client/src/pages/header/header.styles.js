@@ -24,6 +24,10 @@ export const Nav = styled.nav`
 
       @media only screen and (max-width: ${variable.tab}) {
         margin-right : 0;
+
+        #brand_logo {
+          display: none;
+        }
       }
 
       span {
@@ -52,6 +56,18 @@ export const Nav = styled.nav`
       }
     }
   }
+
+  .sub-logo {
+    display: none;
+
+    @media only screen and (max-width: ${variable.tab}) {
+      display: block;
+      
+      #image0 {
+        height: 200px !important;
+      }
+    }
+  }
 `;
 
 export const Brand = styled.ul`
@@ -64,6 +80,7 @@ export const Brand = styled.ul`
       @media only screen and (max-width: ${variable.tab}) {
         text-transform: none;
         margin-left: 0;
+        display : none;
       }
     }
     @media only screen and (max-width: ${variable.tab}) {
@@ -94,6 +111,7 @@ export const User = styled.ul`
       background-size: cover;
       background-position: center;
       border-radius: 50%;
+      border : 1px solid ${variable.light_color};
       position: relative;
       
       @media only screen and (max-width : ${variable.tab}) {
@@ -123,6 +141,12 @@ export const StyledMenuIcon = styled(MenuIcon)`
   @media only screen and (max-width: ${variable.tab}) {
     & {
       display: block;
+    }
+  }
+
+  @media only screen and (max-width : ${variable.smallPhone}) {
+    & {
+      width: 4.5rem;
     }
   }
 `;

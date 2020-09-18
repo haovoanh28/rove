@@ -2,6 +2,7 @@ import userActionTypes from "./user.types";
 
 const INITIAL_STATE = {
   currentUser: null,
+  selectedUserId: "",
   successMessage: "",
   errMessage: "",
   isPending: false,
@@ -23,7 +24,7 @@ const userReducer = (currentState = INITIAL_STATE, action) => {
         ...currentState,
         currentUser: action.payload,
         isPending: false,
-        successMessage: ""
+        successMessage: "",
       };
     case userActionTypes.USER_LOGIN_FAILURE:
     case userActionTypes.USER_SIGNUP_FAILURE:
@@ -35,6 +36,11 @@ const userReducer = (currentState = INITIAL_STATE, action) => {
         ...currentState,
         errMessage: action.payload.response.data.message,
         isPending: false,
+      };
+    case userActionTypes.SET_SELECTED_USER_ID:
+      return {
+        ...currentState,
+        selectedUserId: action.payload,
       };
     case userActionTypes.SET_PENDING_STATE:
       return {

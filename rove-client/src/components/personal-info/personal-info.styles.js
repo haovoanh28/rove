@@ -3,6 +3,18 @@ import styled from 'styled-components';
 import { FormContainer} from "../form/form.styles";
 
 export const StyledPersonalInfoForm = styled(FormContainer)`
+    & > * {
+        margin-bottom : 3rem;
+    }
+
+    h2 { 
+        padding : 3rem 0;
+    }
+
+    .form-btn-group {
+        margin : 2rem auto;
+    }
+
     select {
         display : block;
         border-radius : 2rem;

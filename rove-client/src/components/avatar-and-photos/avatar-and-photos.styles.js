@@ -5,7 +5,7 @@ import variables from "../../_variables";
 export const AvatarAndPhotosContainer = styled.div`
   flex: 1;
   height: 100%;
-  max-width: 40rem;
+  max-width: 45rem;
   padding: 1.5rem 1rem;
   border-radius: 0.8rem;
   box-shadow: 0.5rem 0.5rem 0.8rem rgba(0, 0, 0, 0.4);
@@ -19,7 +19,7 @@ export const AvatarAndPhotosContainer = styled.div`
     margin: 1rem auto;
     margin-top: 3rem;
     font-size: 3.5rem;
-    padding : 0.5rem 0;
+    padding: 0.5rem 0;
   }
 
   @media only screen and (max-width: ${variables.largeTab}) {
@@ -37,16 +37,15 @@ export const AvatarAndPhotosContainer = styled.div`
 `;
 
 export const AvatarContainer = styled.div`
-  width: 50%;
   height: 20rem;
   margin: 0 auto;
   position: relative;
   cursor: pointer;
   img {
+    margin: 0 auto;
     display: block;
-    width: 100%;
     height: 100%;
-    box-shadow: 0.5rem 0.5rem 0.8rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0.2rem 0.2rem 0.8rem 0.5rem rgba(0, 0, 0, 0.4);
     border-radius: 0.8rem;
     object-fit: cover;
   }
@@ -75,7 +74,6 @@ export const AvatarContainer = styled.div`
 
   @media only screen and (max-width: ${variables.tab}) {
     height: 30rem;
-    width: 70%;
     img {
       object-fit: fill;
     }
@@ -90,14 +88,16 @@ export const PhotosContainer = styled.div`
   height: 45%;
   & > div {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     height: 50rem;
   }
 
   & div div {
     display: inline-block;
-    flex: 1 0 20rem;
-    height: 20rem;
+    align-self: center;
+    flex: 0 0 15rem;
+    height: 15rem;
     margin-bottom: 1.5rem;
     margin-right: 1rem;
 
@@ -105,8 +105,9 @@ export const PhotosContainer = styled.div`
       display: block;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
+      object-fit: fill;
+      border: 0.5px solid ${variables.dark_color};
+      box-shadow: 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.4);
     }
   }
 

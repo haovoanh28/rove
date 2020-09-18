@@ -88,6 +88,15 @@ export const userAddPhotoFailure = (err) => ({
   payload: err,
 });
 
+export const setSelectedUserId = (id) => ({
+  type: userActionTypes.SET_SELECTED_USER_ID,
+  payload: id,
+});
+
+export const getSelectedUserId = () => ({
+  type: userActionTypes.SET_SELECTED_USER_ID,
+});
+
 export const setPendingState = (state) => ({
   type: userActionTypes.SET_PENDING_STATE,
   payload: state,

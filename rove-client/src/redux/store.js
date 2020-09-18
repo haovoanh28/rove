@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === "development") {
 const persistConfig = {
   key: "root",
   storage,
-  blacklist : ['dashBoardContent', 'userCollection']
+  blacklist: ["dashBoardContent", "userCollection", "socket"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -28,4 +28,4 @@ const persistor = persistStore(store);
 
 saga.run(rootSaga);
 
-export {store, persistor};
+export { store, persistor };

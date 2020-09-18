@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import {SuccessMessage} from './App.styles';
+import { SuccessMessage } from "./App.styles";
 
 import Header from "./pages/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
@@ -11,12 +11,35 @@ import Communication from "./pages/communication/communication.component";
 import EditProfile from "./pages/edit-profile/edit-profile.component";
 
 import { selectCurrentUser } from "./redux/user/user.selectors";
+import {
+  createSocket,
+  onReceiveMessage,
+  closeSocket,
+} from "./redux/socket/socket.actions";
 
-function App({ currentUser }) {
+function App({ currentUser, socket, createSocket, onReceiveMessage }) {
+  console.log(socket);
+  useEffect(() => {
+    if (currentUser === null) return;
+
+    createSocket(currentUser._id);
+    console.log("socket has been created");
+
+    return () => closeSocket();
+  }, [createSocket, currentUser]);
+
+  useEffect(() => {
+    if (socket === null) return;
+
+    onReceiveMessage();
+
+    return () => socket.off("receive-message");
+  }, [socket, onReceiveMessage]);
+
   return (
     <div className="AppContainer">
-    <SuccessMessage id="success-message"></SuccessMessage>
-    <div id="err-message"></div>
+      <SuccessMessage id="success-message"></SuccessMessage>
+      <div id="err-message"></div>
       <Header />
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -39,6 +62,13 @@ function App({ currentUser }) {
 
 const mapStateToProps = (state) => ({
   currentUser: selectCurrentUser(state),
+  socket: state.socket.socket,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  createSocket: (id) => dispatch(createSocket(id)),
+  onReceiveMessage: () => dispatch(onReceiveMessage()),
+  closeSocket: () => dispatch(closeSocket()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

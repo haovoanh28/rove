@@ -20,6 +20,10 @@ export const StyledUserCard = styled.div`
       height: 2rem;
     }
   }
+
+  a {
+    letter-spacing: .4rem;
+  }
 `;
 
 export const ImageContainer = styled.div`

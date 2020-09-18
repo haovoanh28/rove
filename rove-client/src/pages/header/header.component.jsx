@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Brand, Nav, User, StyledMenuIcon } from "./header.styles";
 import "./header.styles.css";
 
+import {ReactComponent as BrandLogo} from '../../assets/icons/brand_logo.svg';
 import UserMenu from "../../components/user-menu/user-menu.component";
 
 const Header = ({ currentUser, userLogoutSuccess }) => {
@@ -22,8 +23,8 @@ const Header = ({ currentUser, userLogoutSuccess }) => {
       <Nav>
         <StyledMenuIcon onClick={toggleMenu} />
         <Brand id="nav">
-          <li>
-            <Link to="/">Rove</Link>
+          <li id="brand_logo">
+            <Link to="/"><BrandLogo /></Link>
           </li>
           <li>About</li>
           <li>Contact</li>
@@ -31,23 +32,25 @@ const Header = ({ currentUser, userLogoutSuccess }) => {
           <li>Term</li>
         </Brand>
 
+        <Link to="/"><BrandLogo className="sub-logo" /></Link>
+
         {currentUser ? (
           <User avatar={currentUser.avatar}>
+            <li id="user-first-name">{currentUser.firstName}</li>
             <li>
               <div className="avatar">
                 <UserMenu />
               </div>
             </li>
-            <li id="user-first-name">{currentUser.firstName}</li>
           </User>
         ) : (
           <ul>
             <li>
               <Link to="/">Log in</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/signup">Sign up</Link>
-            </li>
+            </li> */}
           </ul>
         )}
       </Nav>

@@ -34,6 +34,19 @@ export const ImageContainer = styled.div`
   img {
     width: 100%;
     height : 100%;
+    margin: 0 auto;
+  }
+
+  @media only screen and (max-width : ${variables.tab}) {
+    img {
+      width: 70%;
+    }
+  }
+
+  @media only screen and (max-width : ${variables.phone}) {
+    img {
+      width: 100%;
+    }
   }
 `;
 

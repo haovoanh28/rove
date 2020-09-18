@@ -13,6 +13,7 @@ export const IntroAndInterestsContainer = styled.div`
     padding: 1rem;
     resize: none;
     width: 125%;
+    font-family: inherit;
   }
 
   @media only screen and (max-width: ${variables.phone}) {
@@ -21,7 +22,7 @@ export const IntroAndInterestsContainer = styled.div`
     width: 100%;
 
     textarea {
-        width: 100%;
+      width: 100%;
     }
   }
 `;

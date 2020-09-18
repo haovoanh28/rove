@@ -1,16 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const photoSchema = mongoose.Schema({
-  url: {
-    type: String,
-  },
-  isMain: {
-    type: Boolean,
-    default: false,
-  },
-});
-
 const userSchema = mongoose.Schema({
   firstName: {
     type: String,
@@ -66,8 +56,8 @@ const userSchema = mongoose.Schema({
       "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
       "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
       "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
-      "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy"
-    ]
+      "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
+    ],
   },
   createdAt: {
     type: Date,

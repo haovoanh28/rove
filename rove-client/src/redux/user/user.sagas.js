@@ -17,7 +17,7 @@ import {
   setPendingState,
 } from "./user.actions";
 
-import {showSuccessMessage} from '../../utilities';
+import { showSuccessMessage } from "../../utilities";
 
 function* onUserLoginStart(action) {
   try {
@@ -41,7 +41,7 @@ function* onUserSignupStart(action) {
   try {
     const response = yield axios({
       method: "POST",
-      url: "http://localhost:8000/api/v1/users",
+      url: "http://users",
       data: action.payload,
     });
     const token = yield response.data.data.accessToken;
@@ -64,7 +64,10 @@ function* onUserUpdateStart(action) {
       },
       data: data,
     });
-    yield call(showSuccessMessage,"Your information has been updated successfully");
+    yield call(
+      showSuccessMessage,
+      "Your information has been updated successfully"
+    );
     yield put(userUpdateSuccess(response.data.data));
   } catch (err) {
     yield put(userUpdateFailure(err));
@@ -105,7 +108,11 @@ function* onUserAddPhotoStart(action) {
       data: formData,
     });
 
-    yield call(showSuccessMessage, "Image has been added to your gallery", true);
+    yield call(
+      showSuccessMessage,
+      "Image has been added to your gallery",
+      true
+    );
     yield put(userAddPhotoSuccess(response.data.data));
   } catch (err) {
     yield put(userAddPhotoFailure(err));

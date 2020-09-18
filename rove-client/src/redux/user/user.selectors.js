@@ -9,6 +9,11 @@ export const selectCurrentUser = createSelector(
   (user) => user.currentUser // result func
 );
 
+export const selectCurrentUserId = createSelector(
+  [selectCurrentUser],
+  (user) => user._id
+);
+
 export const selectPhotos = createSelector(
   [selectCurrentUser],
   (user) => user.photos
@@ -17,6 +22,11 @@ export const selectPhotos = createSelector(
 export const selectAvatar = createSelector(
   [selectCurrentUser],
   (user) => user.avatar
+);
+
+export const selectSelectedUserId = createSelector(
+  [selectUser],
+  (user) => user.selectedUserId
 );
 
 export const selectMessageError = createSelector(

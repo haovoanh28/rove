@@ -1,16 +1,19 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-import variables from '../../_variables';
+import variables from "../../_variables";
 
 export const UserDashboardContentContainer = styled.div`
-    height : 90%;
-    & > * {
-        height : 100%;
-        overflow-y : scroll;
-        overflow-x : hidden;
-    }
+  height: 90%;
 
-    @media only screen and (max-width : ${variables.tab}) {
-        height : 50rem;
-    }
-`
+  & > * {
+    height: 100%;
+    ${(props) =>
+      props.isMessageComponent
+        ? "overflow:hidden"
+        : "overflow-y: scroll; overflow-x : hidden"}
+  }
+
+  @media only screen and (max-width: ${variables.tab}) {
+    height: 50rem;
+  }
+`;
