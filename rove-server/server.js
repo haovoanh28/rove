@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const Message = require("./models/messageModel");
 
 mongoose
-  .connect(process.env.DATABASE_LOCAL, {
+  .connect(process.env.DATABASE_ATLAS, {
     useCreateIndex: true,
     useNewUrlParser: true,
     useFindAndModify: false,

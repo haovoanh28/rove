@@ -28,13 +28,9 @@ const userSchema = mongoose.Schema({
   },
   introduction: {
     type: String,
-    default:
-      "SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT",
   },
   interests: {
     type: String,
-    default:
-      "SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT SOME STUPID TEXT",
   },
   email: {
     type: String,
@@ -50,14 +46,6 @@ const userSchema = mongoose.Schema({
   },
   photos: {
     type: [String],
-    default: [
-      "http://drive.google.com/uc?id=1aK4DUJ9CQfBgbsavGGp-l_nm4mx-KKL6",
-      "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
-      "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
-      "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
-      "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
-      "http://drive.google.com/uc?id=1H1kkJ9oeeRucNQcMGykwcauhh7NshyXy",
-    ],
   },
   createdAt: {
     type: Date,
