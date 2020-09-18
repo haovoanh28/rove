@@ -13,7 +13,7 @@ export const HomePageContainer = styled.div`
 
   form {
     position: absolute;
-    top: 15%;
+    top: 10%;
     left: 65%;
   }
 

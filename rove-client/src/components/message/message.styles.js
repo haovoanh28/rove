@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const MessageContainer = styled.div``;
+export const MessageContainer = styled.div`
+  .spinnerContainer {
+    position: relative;
+  }
+`;
 
 export const MessagesContainer = styled.div`
   overflow: auto;

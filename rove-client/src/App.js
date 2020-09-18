@@ -59,7 +59,6 @@ function App({ currentUser, socket, createSocket, onReceiveMessage }) {
         />
         <Route path="/about" render={About} />
       </Switch>
-      <Footer />
     </div>
   );
 }

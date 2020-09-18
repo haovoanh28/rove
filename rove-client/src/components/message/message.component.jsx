@@ -14,6 +14,7 @@ import {
 } from "./message.styles";
 
 import Chat from "../chat/chat.component";
+import Spinner from "../spinner/spinner.component";
 
 const Message = ({
   selectedUserId,
@@ -26,9 +27,8 @@ const Message = ({
 }) => {
   // Danh sach cac phan tu chat
   const [chatList, setChatList] = useState([]);
+  const [isPending, setIsPending] = useState(true);
   const [messageContent, setMessageContent] = useState("");
-
-  const chatListRef = useRef([]);
 
   // Danh sach cac tin nhan giua nguoi gui va nguoi nhan
   const [messageList, setMessageList] = useState([]);
@@ -37,6 +37,7 @@ const Message = ({
   const messageEndRef = useRef(null);
 
   const scrollToBottom = () => {
+    if (messageEndRef.current === null) return;
     messageEndRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -86,6 +87,7 @@ const Message = ({
       });
 
       setMessageList(response.data.data);
+      setIsPending(false);
     };
     fetchMessages();
   }, [currentUserId, selectedUserId]);
@@ -125,10 +127,15 @@ const Message = ({
 
   return (
     <MessageContainer>
-      <MessagesContainer>
-        {chatList}
-        <div ref={messageEndRef} style={{ height: "5%" }} />
-      </MessagesContainer>
+      {isPending ? (
+        <Spinner />
+      ) : (
+        <MessagesContainer>
+          {chatList}
+          <div ref={messageEndRef} style={{ height: "5%" }} />
+        </MessagesContainer>
+      )}
+
       <ControlsContainer onSubmit={handleSubmit}>
         <textarea
           type="text"

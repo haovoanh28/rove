@@ -88,7 +88,7 @@ const SignUp = ({ userSignupStart }) => {
       );
 
     default:
-      return <div>Fuck</div>;
+      return <div>Something wrong </div>;
   }
 };
 
