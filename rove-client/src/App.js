@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import { SuccessMessage } from "./App.styles";
+import { SuccessMessage, ErrorMessage } from "./App.styles";
 
 import Header from "./pages/header/header.component";
 import Footer from "./pages/footer/footer.component";
@@ -41,6 +41,7 @@ function App({ currentUser, socket, createSocket, onReceiveMessage }) {
   return (
     <div className="AppContainer">
       <SuccessMessage id="success-message"></SuccessMessage>
+      <ErrorMessage id="error-message"></ErrorMessage>
       <div id="err-message"></div>
       <Header />
       <Switch>

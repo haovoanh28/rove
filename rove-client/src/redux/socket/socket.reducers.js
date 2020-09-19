@@ -12,7 +12,7 @@ const socketReducer = (currentState = INITIAL_STATE, action) => {
     case socketTypes.CREATE_SOCKET:
       return {
         ...currentState,
-        socket: io("http://localhost:8000", {
+        socket: io("https://peaceful-crag-36099.herokuapp.com/", {
           query: {
             id: action.payload,
           },

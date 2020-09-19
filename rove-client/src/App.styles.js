@@ -7,7 +7,7 @@ Dark color : #698474
 
 */
 
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import variables from "./_variables";
 
 const slideDownAnimation = keyframes`
@@ -20,7 +20,7 @@ const slideDownAnimation = keyframes`
   }
 `;
 
-export const SuccessMessage = styled.div`
+const messageNotificationStyles = css`
   display: none;
   width: 60%;
   position: fixed;
@@ -45,4 +45,13 @@ export const SuccessMessage = styled.div`
   @media only screen and (max-width: ${variables.phone}) {
     width: 95%;
   }
+`;
+
+export const SuccessMessage = styled.div`
+  ${messageNotificationStyles}
+`;
+
+export const ErrorMessage = styled.div`
+  ${messageNotificationStyles}
+  background-color:red;
 `;

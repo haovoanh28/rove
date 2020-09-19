@@ -37,6 +37,11 @@ exports.createUser = catchAsync(async (req, res, next) => {
     return next(new AppErr("Please provide email and password", 403));
   }
 
+  const check = await User.find({ email: email }).count();
+  if (check) {
+    return next(new AppErr("This email has been used", 403));
+  }
+
   const user = await User.create(req.body);
   const accessToken = generateToken(user);
 

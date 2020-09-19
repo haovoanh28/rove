@@ -17,13 +17,14 @@ import {
   setPendingState,
 } from "./user.actions";
 
-import { showSuccessMessage } from "../../utilities";
+import { showSuccessMessage, showErrorMessage } from "../../utilities";
 
 function* onUserLoginStart(action) {
   try {
+    yield put(setPendingState(true));
     const response = yield axios({
       method: "POST",
-      url: "http://localhost:8000/api/v1/users/login",
+      url: "https://peaceful-crag-36099.herokuapp.com/api/v1/users/login",
       data: action.payload,
     });
     const token = yield response.data.accessToken;
@@ -32,15 +33,18 @@ function* onUserLoginStart(action) {
     yield call(showSuccessMessage, "Login successfully");
     yield put(userLoginSuccess(userInfo));
   } catch (err) {
+    yield call(showErrorMessage, err.response.data.message);
     yield put(userLoginFailure(err));
   }
 }
 
 function* onUserSignupStart(action) {
   try {
+    yield put(setPendingState(true));
     const response = yield axios({
       method: "POST",
-      url: "http://localhost:8000/api/v1/users",
+      url: "https://peaceful-crag-36099.herokuapp.com/api/v1/users",
+      //url: "http://localhost:8000/api/v1/users",
       data: action.payload,
     });
     const token = yield response.data.data.accessToken;
@@ -49,6 +53,7 @@ function* onUserSignupStart(action) {
     yield put(setPendingState(true));
     yield put(userSignupSuccess(userInfo));
   } catch (err) {
+    yield call(showErrorMessage, err.response.data.message);
     yield put(userSignupFailure(err));
   }
 }
@@ -58,7 +63,7 @@ function* onUserUpdateStart(action) {
     const { _id, token, ...data } = action.payload;
     const response = yield axios({
       method: "PATCH",
-      url: `http://localhost:8000/api/v1/users/${_id}`,
+      url: `https://peaceful-crag-36099.herokuapp.com/api/v1/users/${_id}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -81,7 +86,7 @@ function* onUserUpdateAvatarStart(action) {
   try {
     const response = yield axios({
       method: "PATCH",
-      url: `http://localhost:8000/api/v1/users/${_id}/avatar`,
+      url: `https://peaceful-crag-36099.herokuapp.com/api/v1/users/${_id}/avatar`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -101,7 +106,7 @@ function* onUserAddPhotoStart(action) {
   try {
     const response = yield axios({
       method: "PATCH",
-      url: `http://localhost:8000/api/v1/users/${_id}/photo`,
+      url: `https://peaceful-crag-36099.herokuapp.com/api/v1/users/${_id}/photo`,
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -79,7 +79,9 @@ const Message = ({
 
       const response = await axios({
         method: "GET",
-        url: "http://localhost:8000/api/v1/messages",
+        //url: "http://localhost:8000/api/v1/messages",
+        url: "https://peaceful-crag-36099.herokuapp.com/api/v1/messages",
+
         headers: {
           "Content-Type": "application/json",
         },
@@ -119,7 +121,7 @@ const Message = ({
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
     addChat(currentUserId, messageContent);
     sendMessage(messageContent);
@@ -136,14 +138,16 @@ const Message = ({
         </MessagesContainer>
       )}
 
-      <ControlsContainer onSubmit={handleSubmit}>
+      <ControlsContainer>
         <textarea
           type="text"
           onChange={(e) => setMessageContent(e.target.value)}
           onKeyDown={handleKeyDown}
           value={messageContent}
         />
-        <button type="submit">Send</button>
+        <button type="button" onClick={handleClick}>
+          Send
+        </button>
       </ControlsContainer>
     </MessageContainer>
   );

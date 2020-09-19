@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 
 import { fetchUserCollectionStart } from "../../redux/user-collection/user-collection.action";
+
 import { HomePageContainer, Home } from "./hompage.styles";
 
 import LogIn from "./../../components/log-in-form/log-in.component";
@@ -13,6 +14,7 @@ const HomePage = ({
   currentUser,
   userCollection,
   fetchUserCollectionStart,
+  isPending,
 }) => {
   useEffect(() => {
     if (currentUser && !userCollection) {
@@ -22,34 +24,38 @@ const HomePage = ({
 
   return (
     <>
-      <HomePageContainer>
-        {currentUser ? (
-          <>
-            {userCollection ? (
-              <Route exact path="/" component={UserCardsCollection} />
-            ) : (
-              <div
-                style={{
-                  height: "90vh",
-                }}
-              >
-                <Spinner />
-              </div>
-            )}
-          </>
-        ) : (
-          <>
-            <Home>
-              <div className="slogan_container">
-                <p className="slogan">DON'T</p>
-                <p className="slogan">BE</p>
-                <p className="slogan">SHY</p>
-              </div>
-            </Home>
-            <LogIn />
-          </>
-        )}
-      </HomePageContainer>
+      {isPending ? (
+        <Spinner />
+      ) : (
+        <HomePageContainer>
+          {currentUser ? (
+            <>
+              {userCollection ? (
+                <Route exact path="/" component={UserCardsCollection} />
+              ) : (
+                <div
+                  style={{
+                    height: "90vh",
+                  }}
+                >
+                  <Spinner />
+                </div>
+              )}
+            </>
+          ) : (
+            <>
+              <Home>
+                <div className="slogan_container">
+                  <p className="slogan">DON'T</p>
+                  <p className="slogan">BE</p>
+                  <p className="slogan">SHY</p>
+                </div>
+              </Home>
+              <LogIn />
+            </>
+          )}
+        </HomePageContainer>
+      )}
     </>
   );
 };
@@ -57,6 +63,7 @@ const HomePage = ({
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,
   userCollection: state.userCollection.userCollection,
+  isPending: state.user.isPending,
 });
 
 const mapDispatchToProps = (dispatch) => ({

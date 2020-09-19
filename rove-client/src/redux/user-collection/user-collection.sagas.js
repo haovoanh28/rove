@@ -11,7 +11,7 @@ function* onFetchUserCollectionStart(action) {
   try {
     const response = yield axios({
       method: "GET",
-      url: "http://localhost:8000/api/v1/users",
+      url: "https://peaceful-crag-36099.herokuapp.com/api/v1/users",
       headers: {
         Authorization: `Bearer ${action.payload}`,
       },

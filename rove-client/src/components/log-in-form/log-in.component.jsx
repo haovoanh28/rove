@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -13,15 +13,8 @@ import {
   userLoginStart,
   hideErrorMessage,
 } from "../../redux/user/user.actions";
-import { selectMessageError } from "../../redux/user/user.selectors";
 
-const LogIn = ({ userLoginStart, errMessage, hideErrorMessage }) => {
-  useEffect(() => {
-    if (errMessage) {
-      setTimeout(() => hideErrorMessage(), 3000);
-    }
-  }, [errMessage, hideErrorMessage]);
-
+const LogIn = ({ userLoginStart }) => {
   const [state, setState] = useState({
     email: "",
     password: "",
@@ -44,8 +37,6 @@ const LogIn = ({ userLoginStart, errMessage, hideErrorMessage }) => {
 
   return (
     <LogInForm onSubmit={handleSubmit} id="login_form">
-      {errMessage ? <div className="errText">{errMessage}</div> : null}
-
       <div className="text">
         <h2>Find your love now</h2>
       </div>
@@ -89,13 +80,9 @@ const LogIn = ({ userLoginStart, errMessage, hideErrorMessage }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  errMessage: selectMessageError(state),
-});
-
 const mapDispatchToProps = (dispatch) => ({
   userLoginStart: (payload) => dispatch(userLoginStart(payload)),
   hideErrorMessage: () => dispatch(hideErrorMessage()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn);
+export default connect(null, mapDispatchToProps)(LogIn);

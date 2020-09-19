@@ -19,6 +19,7 @@ const Header = ({ currentUser, userLogoutSuccess }) => {
   };
 
   const handleOnClick = (e) => {
+    if (document.getElementById("login_form") === null) return;
     document.getElementById("login_form").scrollIntoView({
       behavior: "smooth",
     });

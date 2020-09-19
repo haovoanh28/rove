@@ -19,7 +19,7 @@ export const CommunicationContainer = styled.div`
   @media only screen and (max-width: ${variables.tab}) {
     height: 100%;
     flex-direction: column;
-    padding : 4rem 0;
+    padding: 4rem 0;
   }
 `;
 
@@ -27,25 +27,26 @@ export const ImageContainer = styled.div`
   display: flex;
   align-items: center;
   max-width: 60%;
-  height : 100%;
+  height: 100%;
   margin: 0 auto;
-  margin-bottom : 3rem;
+  margin-bottom: 3rem;
 
   img {
     width: 100%;
-    height : 100%;
+    height: 15rem;
     margin: 0 auto;
   }
 
-  @media only screen and (max-width : ${variables.tab}) {
+  @media only screen and (max-width: ${variables.tab}) {
     img {
       width: 70%;
     }
   }
 
-  @media only screen and (max-width : ${variables.phone}) {
+  @media only screen and (max-width: ${variables.phone}) {
     img {
       width: 100%;
+      height: 100%;
     }
   }
 `;
@@ -59,14 +60,14 @@ export const UserInfomations = styled.div`
   width: 25%;
   background-color: #fcf8f3;
   color: #698474;
-  
-  @media only screen and (max-width : ${variables.tab}) {
+
+  @media only screen and (max-width: ${variables.tab}) {
     width: 75%;
     align-self: center;
-    margin-bottom : 5rem;
+    margin-bottom: 5rem;
   }
 
-  @media only screen and (max-width : ${variables.phone}) {
-    width : 95%;
+  @media only screen and (max-width: ${variables.phone}) {
+    width: 95%;
   }
 `;

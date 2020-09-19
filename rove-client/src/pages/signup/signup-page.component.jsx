@@ -1,15 +1,30 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
 
-import SignUp from './../../components/sign-up-form/sign-up.component';
+import SignUp from "./../../components/sign-up-form/sign-up.component";
+import Spinner from "../../components/spinner/spinner.component";
 
-import {SignUpPageContainer, BackgroundImgContainer} from './signup-page.styles';
-const SignUpPage = () => {
-    return (
+import {
+  SignUpPageContainer,
+  BackgroundImgContainer,
+} from "./signup-page.styles";
+const SignUpPage = ({ isPending, ...otherProps }) => {
+  return (
+    <>
+      {isPending ? (
+        <Spinner />
+      ) : (
         <SignUpPageContainer>
-            <BackgroundImgContainer />
-            <SignUp />
+          <BackgroundImgContainer />
+          <SignUp />
         </SignUpPageContainer>
-    )
-}
+      )}
+    </>
+  );
+};
 
-export default SignUpPage;
+const mapStateToProps = (state) => ({
+  isPending: state.user.isPending,
+});
+
+export default connect(mapStateToProps)(SignUpPage);
